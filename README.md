@@ -1,2 +1,2 @@
-# my-home-lab
-Files for spinning up resources at home
+# Home Laboratory
+> Files for spinning up resources at home

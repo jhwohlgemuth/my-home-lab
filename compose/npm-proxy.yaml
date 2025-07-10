@@ -1,0 +1,9 @@
+name: "npm proxy"
+services:
+  proxy:
+    container_name: "proxy"
+    image: "${REGISTRY}/${GITHUB_ACTOR}/web:${VERSION}"
+    ports:
+      - "4873:4873"
+    restart: unless-stopped
+    tty: true
