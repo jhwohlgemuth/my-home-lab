@@ -1,0 +1,43 @@
+name: "n8n server"
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    container_name: "n8n"
+    hostname: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      GENERIC_TIMEZONE: "America/New_York"
+      TZ: "America/New_York"
+    privileged: true
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - n8n_data:/home/node/.n8n
+  mailserver:
+    # https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/
+    # Maybe just use https://github.com/bokysan/docker-postfix?
+    image: ghcr.io/docker-mailserver/docker-mailserver:latest
+    container_name: "mailserver"
+    hostname: veda.mail
+    ports:
+      - "25:25" # SMTP
+      - "465:465"
+      - "587:587"
+      - "993:993"
+    environment:
+      ENABLE_RSPAMD: 1
+      ENABLE_CLAMAV: 1
+      ENABLE_FAIL2BAN: 1
+    cap_add:
+      - NET_ADMIN # For Fail2Ban to work
+    restart: always
+volumes:
+  n8n_data:

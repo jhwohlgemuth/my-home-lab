@@ -1,5 +1,6 @@
 name: "lab"
 include:
+  - ./compose/n8n-server.yaml
   - ./compose/npm-proxy.yaml
   - ./compose/children.yaml
 services:
