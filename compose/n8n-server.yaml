@@ -1,4 +1,4 @@
-name: "n8n server"
+name: n8n server
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n:latest
@@ -9,7 +9,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    container_name: "n8n"
+    container_name: n8n
     hostname: n8n
     ports:
       - "5678:5678"

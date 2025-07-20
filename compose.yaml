@@ -1,5 +1,6 @@
-name: "lab"
+name: lab
 include:
+  - ./compose/convertx.yaml
   - ./compose/n8n-server.yaml
   - ./compose/npm-proxy.yaml
   - ./compose/children.yaml
@@ -8,7 +9,7 @@ services:
     extends:
       file: ./compose/common.yaml
       service: common
-    container_name: "env"
+    container_name: env
     hostname: env
     environment:
       - CODE_SERVER_PORT=${CODE_SERVER_PORT}

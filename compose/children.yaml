@@ -1,10 +1,10 @@
-name: "children"
+name: children
 services:
   kyle:
     extends:
       file: common.yaml
       service: common
-    container_name: "kyle"
+    container_name: kyle
     hostname: kyle
     environment:
       - CODE_SERVER_PORT=${KYLE_PORT}
@@ -15,7 +15,7 @@ services:
     extends:
       file: common.yaml
       service: common
-    container_name: "luke"
+    container_name: luke
     hostname: luke
     environment:
       - CODE_SERVER_PORT=${LUKE_PORT}
