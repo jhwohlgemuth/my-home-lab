@@ -1,0 +1,20 @@
+name: stirling-pdf
+services:
+  pdf:
+    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest-fat
+    container_name: pdf
+    restart: unless-stopped
+    environment:
+      DISABLE_ADDITIONAL_FEATURES: false
+      LANGS: en_US
+      UI_HOMEDESCRIPTION: Locally hosted one-stop-shop for all your PDF needs
+    ports:
+      - "1646:8080"
+    volumes:
+      - ./StirlingPDF/trainingData:/usr/share/tessdata # Required for extra OCR languages
+      - ./StirlingPDF/extraConfigs:/configs
+      - ./StirlingPDF/customFiles:/customFiles/
+      - ./StirlingPDF/logs:/logs/
+      - ./StirlingPDF/pipeline:/pipeline/
+volumes:
+  stirling_pdf_data:

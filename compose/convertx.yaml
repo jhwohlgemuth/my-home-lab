@@ -4,12 +4,12 @@ services:
     image: ghcr.io/c4illin/convertx
     container_name: convertx
     restart: unless-stopped
+    environment:
+      ALLOW_UNAUTHENTICATED: true
+      AUTO_DELETE_EVERY_N_HOURS: 0
     ports:
       - "3000:3000"
     volumes:
       - convertx_data:/app/data
-    environment:
-      ALLOW_UNAUTHENTICATED: true
-      AUTO_DELETE_EVERY_N_HOURS: 0
 volumes:
   convertx_data:

@@ -3,6 +3,7 @@ include:
   - ./compose/convertx.yaml
   - ./compose/n8n-server.yaml
   - ./compose/npm-proxy.yaml
+  - ./compose/stirling-pdf.yaml
   - ./compose/children.yaml
 services:
   dev:
