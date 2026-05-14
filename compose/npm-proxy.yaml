@@ -1,7 +1,7 @@
 name: npm proxy
 services:
   proxy:
-    image: "${REGISTRY}/${GITHUB_ACTOR}/web:${VERSION}"
+    image: "${REGISTRY}/${GITHUB_ACTOR}/notebook:${VERSION}"
     container_name: npm
     hostname: npm
     ports:
